@@ -1,8 +1,11 @@
 const express = require('express');
-const { getCars } = require('../controllers');
+const { getAvailableCars, createOrder, getAllCars, getAllOrders } = require('../controllers');
 
 const route = express.Router();
 
-route.get(('/cars'), getCars);
+route.get('/get-cars', getAllCars);
+route.get('/get-orders', getAllOrders);
+route.get(('/cars-available'), getAvailableCars);
+route.post(('/create-order'), createOrder);
 
 module.exports = route
