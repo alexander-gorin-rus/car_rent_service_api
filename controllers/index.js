@@ -41,9 +41,9 @@ exports.createOrder = async (req, res) => {
 
 exports.getAllOrders = async (req, res) => {
     try {
-        const result = db.query('SELECT * FROM car_rent_order;')
+        const result = await db.query('SELECT * FROM car_rent_order JOIN cars ON car_rent_order.car_state_id = cars.state_id;')
         res.status(200).json({
-            orders: result
+            orders: result.rows
         });
     } catch (error) {
         console.log(error);
